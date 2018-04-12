@@ -17,6 +17,14 @@ namespace ForestInteractiveTest.Models
         [MaxLength(160)]
         public string Message { get; set; }
 
+        public static List<Transaction> GetSubmitedMessage()
+        {
+            using (UsersContext dbContext = new UsersContext())
+            {
+                return dbContext.Transaction.OrderBy(p => p.Id).ToList();
+            }
+        }
+
         public static bool CheckMessage(string message)
         {
             bool result = false;

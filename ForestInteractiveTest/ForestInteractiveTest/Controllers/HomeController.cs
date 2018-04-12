@@ -26,6 +26,14 @@ namespace ForestInteractiveTest.Controllers
         }
 
         [HttpGet]
+        public ActionResult SubmitedMessage()
+        {
+            List<Transaction> model = Transaction.GetSubmitedMessage();
+
+            return View(model);
+        }
+
+        [HttpGet]
         public ActionResult Check(string message)
         {
             var result = Transaction.CheckMessage(message);
